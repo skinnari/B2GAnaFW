@@ -119,8 +119,10 @@ def main():
         ptbin = job.split('/')[1]
         cond = job.split('/')[2]
         datatier = job.split('/')[3]
-        requestname = ptbin + '_' + cond
+        requestname = ptbin + '_' + cond[:22]
         print requestname
+        if "backup" in cond: 
+            requestname += "_backup"
         #if len(requestname) > 100: requestname = ''.join((requestname[:100-len(requestname)]).split('_')[:-1])
         if len(requestname) > 100: requestname = requestname[:90]
         print requestname
@@ -145,7 +147,7 @@ def main():
             submit(config)
         except :
             print 'Not submitted.'
-
+        
 
 
 if __name__ == '__main__':
