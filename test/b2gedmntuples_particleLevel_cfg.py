@@ -1052,8 +1052,9 @@ if "MC" in options.DataProcessing:
 #      'keep *_generator_*_*',  
       #"keep *_genPart_*_*",
       "keep *_filteredPrunedGenParticles_*_*",
-#      "keep *_genJetsAK8*_*_*",         
-#      "keep *_genJetsAK8SoftDrop*_*_*", 
+  #      "keep *_genJetsAK8*_*_*",         
+  #      "keep *_slimmedGenJetsAK8_*_*",
+  #      "keep *_genJetsAK8SoftDrop*_*_*", 
       "keep LHEEventProduct_*_*_*",
       "keep LHERunInfoProduct_*_*_*",
       "keep *_particleLevel_*_*",
@@ -1070,7 +1071,8 @@ process.recoFilter = cms.EDFilter("CandViewCountFilter",
     filter = cms.bool(True)
 )
 process.particleFilter = cms.EDFilter("CandViewCountFilter",
-    src = cms.InputTag("slimmedGenJetsAK8"),
+    #src = cms.InputTag("slimmedGenJetsAK8"),
+    src = cms.InputTag("particleLevel","fatjets"),
     minNumber = cms.uint32(1),
     filter = cms.bool(True)
 )
@@ -1096,8 +1098,8 @@ process.filterPath3 = cms.Path(
 )
 
 process.edmNtuplesOut.SelectEvents = cms.untracked.PSet(
-    SelectEvents = cms.vstring('filterPath1','filterPath2','filterPath3')
-    )
+  SelectEvents = cms.vstring('filterPath1','filterPath2','filterPath3')
+)
 
 ##########################################################
 

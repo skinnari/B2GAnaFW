@@ -123,6 +123,10 @@ def main():
         print requestname
         if "backup" in cond: 
             requestname += "_backup"
+        if "ext1" in cond: 
+            requestname += "_ext1"
+        if "ext2" in cond: 
+            requestname += "_ext2"
         #if len(requestname) > 100: requestname = ''.join((requestname[:100-len(requestname)]).split('_')[:-1])
         if len(requestname) > 100: requestname = requestname[:90]
         print requestname
